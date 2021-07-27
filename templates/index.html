@@ -1,1 +1,66 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MealBox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+</head>
+
+
+
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="display-3">
+    <span class="badge badge-dark">The MealBox</span>
+  </div>
+  <br>
+  <center><input type="text" placeholder="Search meals" class="display-5"></center>
+</div>
+
+<hr>
+<div class="display-4 text-center"><span class="badge badge-primary">Random meal:</span> </div>
+<br>
+<center>
+{% for x in randomMeal['meals']: %}
+
+  <div class="card">
+    <div class="card-header"><div class="display-4">  {{x['strMeal']}}  </div></div>
+    <a href="/meal/{{x['strMeal']}}/{{x['idMeal']}}">
+    <div class="card-content"><img  ng-repeat="x in randomMeal" class="img-fluid" src=" {{x['strMealThumb']}}" width="450px"> </div>
+  </a>
+</div>
+
+{% endfor %}
+</center>
+<hr>
+
+<br>
+
+<div class="display-4 text-center"><span class="badge badge-secondary">All Categories</span></div>
+
+<br>
+
+<div class="row">
+  {% for x in allcat['categories']: %}
+  <div class="col">
+  <div class="card">
+    <a href="/categories/{{x['strCategory']}}"><div class="card-content"><img src=" {{x['strCategoryThumb']}}" width="200px"></div></a>
+    <div class="card-footer text-center"> {{ x['strCategory'] }} </div>
+  </div>
+  </div>
+  {% endfor %}
+</div>
+ 
+  
+  
+
+
+
+
+</body>
+</html>
