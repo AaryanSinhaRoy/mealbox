@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Mealbox meal</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="jumbotron jumbotron-fluid text-center">
+            <div class="display-3">
+              <span class="badge badge-dark">The MealBox</span>
+            </div>
+            <br>
+            <center><input type="text" placeholder="Search meals" class="display-5"></center>
+          </div>
+
+          <hr>
+          <div class="display-4 text-center">{{mealname}}</div>
+          <hr>
+        {% for x in meal_info['meals']: %}
+        <div class="row">
+            <div class="col"><img src="{{x['strMealThumb']}}" width="280px">
+              <br>
+              <br>
+            <h3><span class="badge badge-primary">{{x['strArea']}}</span></h3>
+            <h3><span class="badge badge-primary">{{x['strTags']}}</span></h3>
+            </div>
+            <div class="col"><h1><span class="badge badge-secondary">Ingridients:</span></h1>
+            <od>
+              {% for y in inglist: %}
+             
+                  <li>{{y}} </li>
+            
+              {% endfor %}
+            </od>
+            </div>
+            <div class="col">
+              <div class="col"><h1><span class="badge badge-secondary">Measure:</span></h1>
+              <od>
+                {% for z in measurelist: %}
+               
+                    <li>{{z}} </li>
+              
+                {% endfor %}
+              </od>
+            </div>
+        </div>
+        </div><!-- row tag ending -->
+        <hr>
+        <br>
+
+        <div class="display-4 text-center">How to Cook it</div>
+        <br>
+        <h3 class="text-center"> {{x['strInstructions']}} </h3>
+        <hr>
+        <br>
+
+        <iframe width="420" height="315" src="{{x['strYoutube']}}">
+        </iframe>
+        {% endfor %}
+            
+            
+            
+
+
+    </body>
+</html>
